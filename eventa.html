@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-T76R6424");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="FIMLI" />
+    <meta property="og:url" content="https://movieevnetpage.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://cromidi.cafe24.com/upload/dsec.png"
+    />
+    <meta property="og:image:alt" content="Fun movie information site FIMLI" />
+    <meta
+      property="og:description"
+      content="Anyone can check movie information easily and conveniently. FIMLI"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://cromidi.cafe24.com/upload/favicon-96x96.png"
+    />
+    <link rel="stylesheet" href="./eventa.css" />
+    <script defer src="./eventa.js"></script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1166866621737864");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1166866621737864&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    <title>eventA</title>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T76R6424"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+      <form
+        id="event-form"
+        action="https://script.google.com/macros/s/AKfycbyb8CxzsY3Y6uZgMCGUmrybOo7VXk9Q4behcWsS0th5pC7FRC-U35mqsmOFCU4jQ0j3/exec"
+        method="post"
+        target="invisible_iframe"
+      >
+        <span id="eventA-close">&times;</span>
+        <h2>
+          🎬 오늘, 당신의 마음을<br />
+          움직일 영화는?<br /><br />
+          영화 기대평 남기면,<br />
+          🎟 예매권 드려요!
+        </h2>
+        <div class="poster-row">
+          <div class="poster">
+            <img src="./movie01.jpg" width="250" />
+            <label>
+              <input
+                type="radio"
+                name="movie"
+                value="missionimpossible"
+                required
+              />
+              <p>미션임파서블</p>
+            </label>
+          </div>
+          <div class="poster">
+            <img src="./movie02.jpg" width="250" />
+            <label>
+              <input type="radio" name="movie" value="highfive" />
+              <p>하이파이브</p>
+            </label>
+          </div>
+          <div class="poster">
+            <img src="./movie03.jpg" width="250" />
+            <label>
+              <input type="radio" name="movie" value="sojuwar" />
+              <p>소주전쟁</p>
+            </label>
+          </div>
+        </div>
+
+        <label
+          >1.해당영화 선택이유<input type="text" name="reason" required />
+        </label>
+        <label>2.참여자 이름<input type="text" name="name" required /></label>
+        <label
+          >3.전화번호<input
+            type="text"
+            name="phone"
+            placeholder="01012345678"
+            required
+        /></label>
+        <label>4.이메일<input type="email" name="email" required /></label>
+        <input type="hidden" name="variant" value="A" />
+        <button id="eventa_submit" type="submit">이벤트 참여하기</button>
+      </form>
+      <iframe name="invisible_iframe" style="display: none"></iframe>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,771 @@
+@import "./styles/reset.scss";
+@import "./styles/variables.scss";
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  background: map-get($map: $color, $key: dark);
+  color: map-get($map: $color, $key: light);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+
+  header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    background: map-get($map: $color, $key: dark);
+    nav {
+      width: 900px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      z-index: 5;
+      .logo {
+        img {
+          width: auto;
+          height: 30px;
+        }
+      }
+      .search-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        i {
+          font-size: 1.8rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .menu-bg {
+    width: 100%;
+    height: 320px;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    max-height: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.4)
+    );
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    z-index: 1;
+  }
+
+  .gnb {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.4)
+    );
+    z-index: 1;
+    & > ul {
+      width: 900px;
+      padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      & > li > a {
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+        margin-bottom: 10px;
+        padding-bottom: 2px;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background: map-get($map: $color, $key: button);
+          transform-origin: center;
+          transform: translateX(-50%);
+          margin-left: 50%;
+          transition: width 0.3s;
+        }
+        &:hover {
+          color: map-get($map: $color, $key: button);
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+      .submenu {
+        width: 100px;
+        text-align: center;
+        position: absolute;
+        top: 40px;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.3s ease, max-height 0.3s ease;
+        & > li {
+          margin: 10px 0;
+          a {
+            &:hover {
+              color: map-get($map: $color, $key: button);
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mainSlider {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    figure {
+      width: 100%;
+      height: 800px;
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      &.active {
+        opacity: 1;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  .movie {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    article {
+      width: 900px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+      overflow: hidden;
+      position: relative;
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+      }
+      ul {
+        display: flex;
+        gap: 25px;
+        transition: all 0.5s;
+        li {
+          cursor: pointer;
+          .moviePoster {
+            width: 160px;
+            height: 234px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+            span {
+              position: absolute;
+              &:nth-of-type(1) {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                top: 10px;
+                right: 10px;
+                background: rgba($color: #dc143c, $alpha: 0.7);
+                text-align: center;
+                line-height: 40px;
+                border-radius: 8px;
+              }
+              &:nth-of-type(2) {
+                left: 10px;
+                bottom: 10px;
+                font-size: 2.4rem;
+                font-style: italic;
+                text-shadow: 0 0 6px rgba($color: #ffffff, $alpha: 1);
+              }
+            }
+          }
+          .movieTitle {
+            margin: 10px 0;
+            text-align: center;
+            font-size: 1.6rem;
+            width: 160px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+          .movieDesc {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            line-height: 1rem;
+            span:nth-child(1) {
+              font-weight: bold;
+              font-size: 1.4rem;
+            }
+          }
+        }
+      }
+      .arrowBtn {
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 34px;
+        border-radius: 50%;
+        cursor: pointer;
+        background: map-get($map: $color, $key: button);
+        transform: translateY(-50%);
+        transition: all 0.3s;
+        &#nowPlayingRightArrow,
+        &#upcomingRightArrow,
+        &#topRatedRightArrow {
+          right: 0;
+        }
+        &#nowPlayingLeftArrow,
+        &#upcomingLeftArrow,
+        &#topRatedLeftArrow {
+          left: 0;
+        }
+        &:hover {
+          background: map-get($map: $color, $key: light);
+          color: map-get($map: $color, $key: button);
+        }
+      }
+    }
+  }
+
+  .faq {
+    width: 100%;
+    height: 100%;
+    margin: 100px 0;
+    .faq-inner {
+      width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      h1 {
+        text-align: center;
+        font-size: 3rem;
+      }
+      .accordion {
+        font-size: 1.6rem;
+        margin: 10px 0;
+        .title {
+          width: 100%;
+          font-size: 2rem;
+          font-weight: bold;
+          margin-bottom: 8px;
+          padding: 10px;
+          position: relative;
+          transition: all 0.3s;
+          cursor: pointer;
+          &::after {
+            content: "\2b";
+            font-family: "fontawesome";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s;
+          }
+          &.active {
+            background: map-get($map: $color, $key: active);
+            &::after {
+              transform: translateY(-50%) rotate(45deg);
+            }
+          }
+        }
+        .content {
+          margin-bottom: 16px;
+          padding: 10px;
+          font-size: 1.8rem;
+          display: none;
+        }
+      }
+      .newsletter {
+        width: 100%;
+        text-align: center;
+        margin-top: 100px;
+        p {
+          font-size: 2rem;
+          margin-bottom: 10px;
+        }
+        form {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          input[type="text"] {
+            border: none;
+            height: 60px;
+            font-size: 1.6rem;
+            flex: 3;
+            padding-left: 10px;
+            &:focus {
+              outline: none;
+            }
+          }
+          input[type="submit"] {
+            flex: 1;
+            height: 60px;
+            border: none;
+            background: map-get($map: $color, $key: button);
+            color: map-get($map: $color, $key: light);
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-search {
+  width: 100%;
+  height: 300px;
+  position: fixed;
+  top: -100%;
+  left: 0;
+  z-index: 5;
+  background: rgba($color: #000000, $alpha: 0.5);
+  color: map-get($map: $color, $key: light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s;
+  &.active {
+    top: 0;
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    i {
+      font-size: 2.4rem;
+      cursor: pointer;
+    }
+  }
+  .search {
+    width: 500px;
+    position: relative;
+    form {
+      display: flex;
+      input[type="search"] {
+        flex: 5;
+        padding: 15px;
+        padding-left: 30px;
+        border: none;
+        &::placeholder {
+          opacity: 1;
+          font-style: italic;
+          transition: opacity 0.3s;
+        }
+        &:focus {
+          outline: none;
+          &::placeholder {
+            opacity: 0;
+          }
+        }
+      }
+      input[type="submit"] {
+        flex: 1;
+        padding: 15px;
+        border: none;
+        background: map-get($map: $color, $key: button);
+        color: map-get($map: $color, $key: light);
+        opacity: 0.8;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    .hash-tag {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      color: map-get($map: $color, $key: hashtag);
+    }
+    &::before {
+      content: "\f002";
+      font-family: "fontawesome";
+      color: map-get($map: $color, $key: button);
+      position: absolute;
+      top: 20%;
+      left: 8px;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background: rgba($color: #000000, $alpha: 0.7);
+  width: 100%;
+  height: auto;
+  padding: 100px;
+  // display: flex;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  .modal-content {
+    width: 1000px;
+    position: relative;
+    .modal-top {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      .modal-photo {
+        width: 300px;
+        height: 450px;
+        border-radius: 8px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      form {
+        width: 600px;
+        .modal-info {
+          width: 100%;
+          h1 {
+            font-size: 4rem;
+            margin-bottom: 14px;
+          }
+          div {
+            font-size: 1.6rem;
+            // line-height: 1.2rem;
+            span {
+              display: inline-block;
+              margin-right: 4px;
+              padding-right: 10px;
+              border-right: 1px solid map-get($map: $color, $key: light);
+              &:last-child {
+                border-right: none;
+              }
+            }
+          }
+        }
+        .modal-button {
+          width: 100%;
+          margin: 20px 0;
+          a {
+            display: inline-block;
+            width: auto;
+            border: 1px solid map-get($map: $color, $key: light);
+            border-radius: 34px;
+            margin-right: 8px;
+            padding: 8px 20px;
+            transition: border 0.3s, background 0.3s;
+            &:hover {
+              border: 1px solid map-get($map: $color, $key: button);
+              background: map-get($map: $color, $key: button);
+            }
+            i {
+              margin-right: 10px;
+            }
+          }
+        }
+        .modal-desc {
+          width: 100%;
+          margin-bottom: 20px;
+          p {
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+          }
+        }
+        input[type="submit"] {
+          border: none;
+          border-radius: 34px;
+          background: map-get($map: $color, $key: button);
+          color: map-get($map: $color, $key: light);
+          padding: 8px 36px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+    .modal-bottom {
+      .modal-detail {
+        width: 100%;
+        background: map-get($map: $color, $key: button);
+        padding: 10px;
+        border-radius: 20px 0 0 0;
+        h1 {
+          font-size: 3rem;
+          margin-bottom: 14px;
+        }
+        div {
+          margin-bottom: 10px;
+          padding-left: 20px;
+          span {
+            &:first-child {
+              font-size: 1.6rem;
+              font-weight: bold;
+              margin-right: 12px;
+            }
+            &:last-child {
+              font-style: italic;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      .modal-poster {
+        width: 100%;
+        height: 500px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .modal-trailer {
+        width: 100%;
+        height: 500px;
+        // margin: 20px 0;
+        background: #fff;
+        iframe {
+          border: none;
+        }
+      }
+    }
+  }
+  .modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    i {
+      font-size: 3rem;
+      cursor: pointer;
+    }
+  }
+  &.active {
+    display: flex;
+  }
+}
+
+.modal-overlay-add {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* 다크그레이 60% 불투명 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  .modal-box {
+    background-color: map-get($map: $color, $key: dark);
+    padding: 30px 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 90%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    .logo {
+      img {
+        width: 400px;
+      }
+    }
+    p {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+  &.hidden {
+    display: none;
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.popup-content {
+  width: 500px;
+  height: 400px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
+    url("./event_img.jpg") center/cover no-repeat;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    margin-bottom: 20px;
+    font-style: italic;
+    font-size: 3rem;
+  }
+  h4 {
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+    font-weight: normal;
+    em {
+      font-weight: bold;
+      font-style: normal;
+      color: #dc143c;
+    }
+  }
+  button {
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background: none;
+    color: #fff;
+    font-size: 2rem;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+}
+#popup-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+.popup-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 1rem;
+  font-size: 2rem;
+  border-radius: 8px;
+  z-index: 2;
+}
+
+/* 태블릿 대응 (2개씩) */
+@media screen and (max-width: 992px) {
+}
+
+/* 모바일 대응 (1개씩) */
+@media screen and (max-width: 600px) {
+  .container {
+    header {
+      nav {
+        flex-direction: column;
+        padding: 20px;
+        padding-top: 20px;
+        .logo {
+          img {
+            height: 50px;
+          }
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .gnb {
+      & > ul {
+        width: 100%;
+        & > li > a {
+          display: none;
+        }
+      }
+    }
+    .movie {
+      article {
+        width: 100%;
+      }
+    }
+    .faq {
+      .faq-inner {
+        width: 100%;
+      }
+    }
+  }
+  .modal-overlay {
+    width: 100%;
+    padding: 0;
+    .modal-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .modal-top {
+        flex-direction: column;
+        .modal-photo {
+          width: 100%;
+          margin-top: 150px;
+        }
+        form {
+          width: 100%;
+          padding: 20px;
+          .modal-button {
+            a {
+              margin: 8px;
+            }
+          }
+        }
+      }
+      .modal-bottom {
+        .modal-trailer {
+          iframe {
+            width: 100%;
+          }
+        }
+      }
+      .modal-close {
+        top: 180px;
+        right: 20px;
+        z-index: 9999;
+      }
+    }
+  }
+  .modal-search {
+    .search {
+      .hash-tag {
+        display: none;
+      }
+    }
+  }
+}

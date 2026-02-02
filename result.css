@@ -1,0 +1,107 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #000;
+  font-family: Arial, sans-serif;
+  font-size: 1.6rem;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  border: none;
+  background: #000;
+  color: #fff;
+  margin-top: 40px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+#result {
+  color: #fff;
+  margin: 40px 0;
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 기본은 4개 */
+  gap: 16px;
+  max-width: 1200px; /* 최대 너비 제한 */
+  margin: 0 auto; /* 가운데 정렬 */
+  padding: 0 20px;
+}
+
+.movie-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.movie-card-content {
+  padding: 12px;
+}
+
+.movie-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.movie-release {
+  font-size: 0.85rem;
+  color: gray;
+  margin-bottom: 8px;
+}
+
+.movie-overview {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* 태블릿 대응 (2개씩) */
+@media screen and (max-width: 992px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* 모바일 대응 (1개씩) */
+@media screen and (max-width: 600px) {
+  .movie-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .movie-card img {
+    height: 250px;
+  }
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="FIMLI" />
+    <meta property="og:url" content="https://movieevnetpage.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://cromidi.cafe24.com/upload/dsec.png"
+    />
+    <meta property="og:image:alt" content="Fun movie information site FIMLI" />
+    <meta
+      property="og:description"
+      content="Anyone can check movie information easily and conveniently. FIMLI"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://cromidi.cafe24.com/upload/favicon-96x96.png"
+    />
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/3f2ea24883.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- custom css & js-->
+    <link rel="stylesheet" href="./style.css" />
+    <script defer type="module" src="./script.js"></script>
+    <title>FilmI</title>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    
+    <!-- End Google Tag Manager (noscript) -->
+    <main class="container">
+      <!-- 메인페이지 내 팝업 -->
+      <div id="event-popup" class="popup">
+        <div class="popup-content">
+          <h1>FLIM.I (필름아이)<br />홈페이지 런칭이벤트</h1>
+          <h4>
+            이벤트에 참여하시는 분들 중<br />
+            추첨을 통해 <em>영화예메권</em>을 발송드립니다.<br />
+            (*1인당 1회 참여가능 & 중복참여 불가!)
+          </h4>
+          <!-- <button onclick="location.href='eventa.html'">이벤트 참여하기</button> -->
+          <button id="go-event">이벤트 참여하기</button>
+          <span id="popup-close">&times;</span>
+        </div>
+      </div>
+      <button id="popup-open" class="popup-button" style="display: none">
+        🎬 이벤트 다시 보기
+      </button>
+      <header>
+        <nav>
+          <div class="logo">
+            <a href="#">
+              <img src="./final.png" alt="logo" />
+            </a>
+          </div>
+          <div class="search-box">
+            <span>검색하고 싶은 영화를 찾아보세요</span>
+            <i class="fas fa-magnifying-glass"></i>
+          </div>
+        </nav>
+      </header>
+      <div class="menu-bg"></div>
+      <nav class="gnb">
+        <ul>
+          <li>
+            <a href="#">홈</a>
+            <ul class="submenu">
+              <li><a href="#" class="open-modal">공지사항</a></li>
+              <li><a href="#adsponsors" class="scroll-link">광고문의</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">영화</a>
+            <ul class="submenu">
+              <li><a href="#nowplaying">현재상영작</a></li>
+              <li><a href="#upcoming">개봉예정작</a></li>
+              <li><a href="#toprated">인기상영작</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">이벤트</a>
+            <ul class="submenu">
+              <li><a href="#nowplaying">영화추천</a></li>
+              <li><a href="#mousale" class="scroll-link">제휴할인</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">스토어</a>
+            <ul class="submenu">
+              <li><a href="#best" class="scroll-link">베스트</a></li>
+              <li><a href="#" class="open-modal">포토카드</a></li>
+              <li><a href="#" class="open-modal">굿즈상품</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Q&A</a>
+            <ul class="submenu">
+              <li><a href="#membership" class="scroll-link">멤버십 제도</a></li>
+              <li><a href="#youth" class="scroll-link">미성년자/성인</a></li>
+              <li><a href="#national" class="scroll-link">국내/해외거주</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <section class="mainSlider"></section>
+      <section class="movie">
+        <article id="nowplaying" class="nowplaying">
+          <h1>무비차트 | 현재상영작</h1>
+          <ul></ul>
+          <span id="nowPlayingLeftArrow" class="arrowBtn">
+            <i class="fas fa-chevron-left"></i>
+          </span>
+          <span id="nowPlayingRightArrow" class="arrowBtn">
+            <i class="fas fa-chevron-right"></i>
+          </span>
+        </article>
+        <article id="upcoming" class="upcoming">
+          <h1>무비차트 | 개봉예정작</h1>
+          <ul></ul>
+          <span id="upcomingLeftArrow" class="arrowBtn">
+            <i class="fas fa-chevron-left"></i>
+          </span>
+          <span id="upcomingRightArrow" class="arrowBtn">
+            <i class="fas fa-chevron-right"></i>
+          </span>
+        </article>
+        <article id="toprated" class="toprated">
+          <h1>무비차트 | 인기상영작</h1>
+          <ul></ul>
+          <span id="topRatedLeftArrow" class="arrowBtn">
+            <i class="fas fa-chevron-left"></i>
+          </span>
+          <span id="topRatedRightArrow" class="arrowBtn">
+            <i class="fas fa-chevron-right"></i>
+          </span>
+        </article>
+      </section>
+      <section class="faq">
+        <div class="faq-inner">
+          <h1>자주묻는질문</h1>
+          <div class="accordion">
+            <div class="title active">멤버십 제도</div>
+            <div id="membership" class="content">
+              필름아이의 멤버십 제도는 다음과 같습니다. 일반등급부터 VIP등급 /
+              RVIP등급 / VVIP등급 / SVIP등급까지 총5개의 등급으로
+              구분되어있습니다. 현재는 모든 회원 및 고객님들 모두 일반등급이며,
+              향후 서비스 사용정도에 따라 최초 VIP등급으로 승급될 예정이며,
+              등급에 따라 누적되는 적립금 및 참여가능한 이벤트가 달라질 수
+              있습니다.
+            </div>
+            <div class="title">미성년자 및 성인이용 여부</div>
+            <div id="youth" class="content">
+              필름아이에서 관리하는 모든 데이터는 비선정적이며, 비폭력적인
+              컨텐츠를 지향합니다. 또한 컨텐츠에 대한 자극적인 요소 역시 최대한
+              검열되며, 누구나 편리하게 사용할 수 있는 컨텐츠를 제공할 것을
+              약속합니다.
+            </div>
+            <div class="title">국내 및 해외거주자 사용가능 여부</div>
+            <div id="national" class="content">
+              필름아이는 국가와 관계없이 누구나 사용가능한 사이트 입니다. 영화를
+              사랑하는 누구라면 필름아이에 방문하여 새로운 영화 정보를 확인할 수
+              있습니다.
+            </div>
+            <div class="title">베스트 및 굿즈상품도 판매하나요?</div>
+            <div id="best" class="content">
+              필름아이는 향후 영화 컨텐츠 관련 굿즈상품도 판매할 예정입니다.
+              멤버십 회원 등급에 따라 할인률이 달라질 수 있으며, 상품 구매 시,
+              적립금 역시 적립될 수 있음을 말씀드립니다.
+            </div>
+            <div class="title">제휴할인</div>
+            <div id="mousale" class="content">
+              필름아이도 제휴할인을 준비중에 있습니다. 다양한 국내.외 업체들과의
+              효율적인 제휴할인 정책을 수립하여 필름아이 고객님들께서 편하게
+              서비스를 사용하실 수 있도록 최선을 다하겠습니다.
+            </div>
+            <div class="title">광고문의</div>
+            <div id="adsponsors" class="content">
+              필름아이도 광고제휴 및 스폰서 협찬이 가능합니다. 다만, 아직 100%
+              서비스가 준비되지 못한 관계로 향후 완벽하게 준비된 이후 정식적으로
+              광고제휴 및 스폰서 협찬을 진행할 계획입니다.
+            </div>
+          </div>
+          <div class="newsletter">
+            <p>
+              시청할 준비가 되셨나요? <br />
+              멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.
+            </p>
+            <form name="email-list" action="#" method="get">
+              <input type="text" name="emailAddress" id="emailAddress" />
+              <input type="submit" value="시작하기" />
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="modal-search">
+      <div class="close">
+        <i class="fas fa-xmark"></i>
+      </div>
+      <div class="search">
+        <form
+          name="searchForm"
+          id="searchForm"
+          action="./result.html"
+          method="get"
+        >
+          <input
+            type="search"
+            name="search-box"
+            id="search-box"
+            placeholder="보고싶은 영화를 검색하세요"
+          />
+          <input type="submit" value="Search" />
+        </form>
+        <p class="hash-tag">
+          <span>#마인크래프트</span>
+          <span>#백설공주</span>
+          <span>#워킹맨</span>
+          <span>#미션임파서블</span>
+          <span>#쇼생크탈출</span>
+        </p>
+      </div>
+    </div>
+    <div class="modal-overlay"></div>
+    <!-- 모달 오버레이 + 모달 콘텐츠 -->
+    <div id="modal-overlay-add" class="modal-overlay-add hidden">
+      <div class="modal-box">
+        <div class="logo">
+          <a href="#">
+            <img src="./final.png" alt="logo" />
+          </a>
+        </div>
+        <p>
+          저희 필름아이를 방문해주셔서 진심으로 감사합니다. ^^<br />
+          현재 필름아이는 가오픈 상태로 아직 100% 준비되지 못했습니다.<br />
+          기다려 주시면 더 좋은 정보와 유익한 이벤트로 보답하겠습니다.<br />
+          오늘도 좋은 하루 되세요. 감사합니다.
+        </p>
+        <button id="close-modal">닫기</button>
+      </div>
+    </div>
+  </body>
+</html>

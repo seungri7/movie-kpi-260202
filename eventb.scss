@@ -1,0 +1,90 @@
+@import "./styles/reset.scss";
+@import "./styles/variables.scss";
+
+.container {
+  width: 100%;
+  height: 100%;
+  // background: #000;
+  background: url("./Frame\ 5.png") center/cover no-repeat;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  form {
+    position: relative;
+    #eventB-close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+    }
+    // max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .poster-row {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1rem;
+      gap: 20px;
+      .poster {
+        text-align: center;
+        label {
+          display: block;
+        }
+      }
+    }
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      height: 30px;
+      margin-top: 10px;
+      padding: 4px;
+      background: #000;
+      color: #fff;
+      border: 1px solid #fff;
+      &:focus {
+        outline: none;
+      }
+    }
+    button[type="submit"] {
+      width: 200px;
+      padding: 10px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #fff;
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover {
+        background: #000;
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    form {
+      width: 100%;
+      #eventB-close {
+        top: 60px;
+      }
+      h2 {
+        font-size: 1.1rem;
+      }
+      .poster-row {
+        flex-direction: column;
+      }
+    }
+  }
+}
